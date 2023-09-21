@@ -82,7 +82,7 @@ if (!is.element("languageserver", installed.packages()[, 1])) {
   install.packages("languageserver", dependencies = TRUE)
 }
 require("languageserver")
-
+ 
 # Loading Datasets ----
 ## STEP 2: Download sample datasets ----
 # Create a folder called "data" and store the following 2 files inside the
