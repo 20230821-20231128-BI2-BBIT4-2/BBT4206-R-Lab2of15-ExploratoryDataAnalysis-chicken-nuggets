@@ -1,24 +1,32 @@
 Business Intelligence Lab Submission Markdown
 ================
-<Specify your name here>
-<Specify the date when you submitted the lab>
+<Specify your group name here>
+\<22nd september 2023\>
 
-- [Student Details](#student-details)
-- [Setup Chunk](#setup-chunk)
-- [\<Provide an Appropriate Title
-  Here\>](#provide-an-appropriate-title-here)
-  - [\<You Can Have a Sub-Title Here\>](#you-can-have-a-sub-title-here)
+\# Student Details
 
-# Student Details
-
-|                                                   |                                                                                            |
-|---------------------------------------------------|--------------------------------------------------------------------------------------------|
-| **Student ID Numbers and Names of Group Members** | \<list one student name and ID per line; you should be between 2 and 5 members per group\> |
-| **BBIT 4.2 Group**                                | \<either group A, B, or C\>                                                                |
-| **Course Code**                                   | BBT4206                                                                                    |
-| **Course Name**                                   | Business Intelligence II                                                                   |
-| **Program**                                       | Bachelor of Business Information Technology                                                |
-| **Semester Duration**                             | 21<sup>st</sup> August 2023 to 28<sup>th</sup> November 2023                               |
++—————————————————+————————————————————————————————————————————————————————–+
+\| **Student ID Numbers and Names of Group Members** \| *\<list one
+student name, class group (just the letter; A, B, or C), and ID per
+line, e.g., 123456 - A - John Leposo; you should be between 2 and 5
+members per group\>* \| \| \| \| \| \| 1. 137118 - chicken-nuggets -
+Fatouamata Camara \| \| \| \| \| \| 2. 127039 - chicken-nuggets - Ayan
+Ahmed \| \| \| \| \| \| 3. 136869 - chicken-nuggets - Birkanwal Bhambra
+\| \| \| \| \| \| 4. 127602 - chicken-nuggets - Trevor Anjere \| \| \|
+\| \| \| 5. 133824 -chicken-nuggets - Habiba Siba \|
++—————————————————+————————————————————————————————————————————————————————–+
+\| **GitHub Classroom Group Name** \| chicken-nugget \|
++—————————————————+————————————————————————————————————————————————————————–+
+\| **Course Code** \| BBT4206 \|
++—————————————————+————————————————————————————————————————————————————————–+
+\| **Course Name** \| Business Intelligence II \|
++—————————————————+————————————————————————————————————————————————————————–+
+\| **Program** \| Bachelor of Business Information Technology \|
++—————————————————+————————————————————————————————————————————————————————–+
+\| **Semester Duration** \| 21<sup>st</sup> August 2023 to
+28<sup>th</sup> November 2023 \|
++—————————————————+————————————————————————————————————————————————————————–+
+\|
 
 # Setup Chunk
 

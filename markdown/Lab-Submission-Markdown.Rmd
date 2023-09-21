@@ -1,47 +1,47 @@
 ---
 title: "Business Intelligence Lab Submission Markdown"
 author: "<Specify your group name here>"
-date: "<Specify the date when you submitted the lab>"
+date: "<22nd september 2023>"
 output:
   github_document: 
-    toc: yes
-    toc_depth: 4
-    fig_width: 6
-    fig_height: 4
-    df_print: default
+  toc: yes
+toc_depth: 4
+fig_width: 6
+fig_height: 4
+df_print: default
 editor_options:
   chunk_output_type: console
 ---
-
-# Student Details
-
-+---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **Student ID Numbers and Names of Group Members** | *\<list one student name, class group (just the letter; A, B, or C), and ID per line, e.g., 123456 - A - John Leposo; you should be between 2 and 5 members per group\>* |
-|                                                   |                                                                                                                                                                          |
-|                                                   | 1.  ID - Class Group - Name                                                                                                                                              |
-|                                                   |                                                                                                                                                                          |
-|                                                   | 2.  ID - Class Group - Name                                                                                                                                              |
-|                                                   |                                                                                                                                                                          |
-|                                                   | 3.  ID - Class Group - Name                                                                                                                                              |
-|                                                   |                                                                                                                                                                          |
-|                                                   | 4.  ID - Class Group - Name                                                                                                                                              |
-|                                                   |                                                                                                                                                                          |
-|                                                   | 5.  ID - Class Group - Name                                                                                                                                              |
-+---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **GitHub Classroom Group Name**                   | *\<specify the name of the team you created on GitHub classroom\>*                                                                                                       |
-+---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **Course Code**                                   | BBT4206                                                                                                                                                                  |
-+---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **Course Name**                                   | Business Intelligence II                                                                                                                                                 |
-+---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **Program**                                       | Bachelor of Business Information Technology                                                                                                                              |
-+---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **Semester Duration**                             | 21^st^ August 2023 to 28^th^ November 2023                                                                                                                               |
-+---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
-# Setup Chunk
-
-We start by installing all the required packages
+  
+  # Student Details
+  
+  +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+  | **Student ID Numbers and Names of Group Members** | *\<list one student name, class group (just the letter; A, B, or C), and ID per line, e.g., 123456 - A - John Leposo; you should be between 2 and 5 members per group\>* |
+  |                                                   |                                                                                                                                                                          |
+  |                                                   | 1.  137118 - chicken-nuggets - Fatouamata Camara                                                                                                                         |
+  |                                                   |                                                                                                                                                                          |
+  |                                                   | 2.  127039 - chicken-nuggets - Ayan Ahmed                                                                                                                                |
+  |                                                   |                                                                                                                                                                          |
+  |                                                   | 3.  136869 - chicken-nuggets - Birkanwal Bhambra                                                                                                                         |
+  |                                                   |                                                                                                                                                                          |
+  |                                                   | 4.  127602 - chicken-nuggets - Trevor Anjere                                                                                                                             |
+  |                                                   |                                                                                                                                                                          |
+  |                                                   | 5.  133824 -chicken-nuggets - Habiba Siba                                                                                                                                |
+  +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+  | **GitHub Classroom Group Name**                   | chicken-nugget                                                                                                                                                           |
+  +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+  | **Course Code**                                   | BBT4206                                                                                                                                                                  |
+  +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+  | **Course Name**                                   | Business Intelligence II                                                                                                                                                 |
+  +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+  | **Program**                                       | Bachelor of Business Information Technology                                                                                                                              |
+  +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+  | **Semester Duration**                             | 21^st^ August 2023 to 28^th^ November 2023                                                                                                                               |
+  +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+  
+  # Setup Chunk
+  
+  We start by installing all the required packages
 
 ```{r Install Packages, echo=TRUE, message=FALSE, warning=FALSE}
 ## formatR - Required to format R code in the markdown ----
@@ -61,27 +61,27 @@ require("readr")
 ```
 
 ------------------------------------------------------------------------
-
-**Note:** the following "*KnitR*" options have been set as the defaults in this markdown:\
+  
+  **Note:** the following "*KnitR*" options have been set as the defaults in this markdown:\
 `knitr::opts_chunk$set(echo = TRUE, warning = FALSE, eval = TRUE, collapse = FALSE, tidy.opts = list(width.cutoff = 80), tidy = TRUE)`.
 
 More KnitR options are documented here <https://bookdown.org/yihui/rmarkdown-cookbook/chunk-options.html> and here <https://yihui.org/knitr/options/>.
 
 ```{r setup, echo=TRUE, message=FALSE, warning=FALSE}
 knitr::opts_chunk$set(
-	eval = TRUE,
-	echo = TRUE,
-	warning = FALSE,
-	collapse = FALSE,
-	tidy = TRUE
+  eval = TRUE,
+  echo = TRUE,
+  warning = FALSE,
+  collapse = FALSE,
+  tidy = TRUE
 )
 ```
 
 ------------------------------------------------------------------------
-
-**Note:** the following "*R Markdown*" options have been set as the defaults in this markdown:
-
-> output:\
+  
+  **Note:** the following "*R Markdown*" options have been set as the defaults in this markdown:
+  
+  > output:\
 > \
 > github_document:\
 > toc: yes\
@@ -96,176 +96,94 @@ knitr::opts_chunk$set(
 # Loading the Student Performance Dataset
 
 The 20230412-20230719-BI1-BBIT4-1-StudentPerformanceDataset is then loaded. The dataset and its metadata are available here: <https://drive.google.com/drive/folders/1-BGEhfOwquXF6KKXwcvrx7WuZXuqmW9q?usp=sharing>
-
-```{r Load Dataset}
-student_performance_dataset <-
-  readr::read_csv(
-                  "../data/20230412-20230719-BI1-BBIT4-1-StudentPerformanceDataset.CSV", # nolint
-                  col_types =
-                  readr::cols(
-                              class_group =
-                              readr::col_factor(levels = c("A", "B", "C")),
-                              gender = readr::col_factor(levels = c("1", "0")),
-                              YOB = readr::col_date(format = "%Y"),
-                              regret_choosing_bi =
-                              readr::col_factor(levels = c("1", "0")),
-                              drop_bi_now =
-                              readr::col_factor(levels = c("1", "0")),
-                              motivator =
-                              readr::col_factor(levels = c("1", "0")),
-                              read_content_before_lecture =
-                              readr::col_factor(levels =
-                                                c("1", "2", "3", "4", "5")),
-                              anticipate_test_questions =
-                              readr::col_factor(levels =
-                                                c("1", "2", "3", "4", "5")),
-                              answer_rhetorical_questions =
-                              readr::col_factor(levels =
-                                                c("1", "2", "3", "4", "5")),
-                              find_terms_I_do_not_know =
-                              readr::col_factor(levels =
-                                                c("1", "2", "3", "4", "5")),
-                              copy_new_terms_in_reading_notebook =
-                              readr::col_factor(levels =
-                                                c("1", "2", "3", "4", "5")),
-                              take_quizzes_and_use_results =
-                              readr::col_factor(levels =
-                                                c("1", "2", "3", "4", "5")),
-                              reorganise_course_outline =
-                              readr::col_factor(levels =
-                                                c("1", "2", "3", "4", "5")),
-                              write_down_important_points =
-                              readr::col_factor(levels =
-                                                c("1", "2", "3", "4", "5")),
-                              space_out_revision =
-                              readr::col_factor(levels =
-                                                c("1", "2", "3", "4", "5")),
-                              studying_in_study_group =
-                              readr::col_factor(levels =
-                                                c("1", "2", "3", "4", "5")),
-                              schedule_appointments =
-                              readr::col_factor(levels =
-                                                c("1", "2", "3", "4", "5")),
-                              goal_oriented =
-                              readr::col_factor(levels =
-                                                c("1", "0")),
-                              spaced_repetition =
-                              readr::col_factor(levels =
-                                                c("1", "2", "3", "4")),
-                              testing_and_active_recall =
-                              readr::col_factor(levels =
-                                                c("1", "2", "3", "4")),
-                              interleaving =
-                              readr::col_factor(levels =
-                                                c("1", "2", "3", "4")),
-                              categorizing =
-                              readr::col_factor(levels =
-                                                c("1", "2", "3", "4")),
-                              retrospective_timetable =
-                              readr::col_factor(levels =
-                                                c("1", "2", "3", "4")),
-                              cornell_notes =
-                              readr::col_factor(levels =
-                                                c("1", "2", "3", "4")),
-                              sq3r = readr::col_factor(levels =
-                                                       c("1", "2", "3", "4")),
-                              commute = readr::col_factor(levels =
-                                                          c("1", "2",
-                                                            "3", "4")),
-                              study_time = readr::col_factor(levels =
-                                                             c("1", "2",
-                                                               "3", "4")),
-                              repeats_since_Y1 = readr::col_integer(),
-                              paid_tuition = readr::col_factor(levels =
-                                                               c("0", "1")),
-                              free_tuition = readr::col_factor(levels =
-                                                               c("0", "1")),
-                              extra_curricular = readr::col_factor(levels =
-                                                                   c("0", "1")),
-                              sports_extra_curricular =
-                              readr::col_factor(levels = c("0", "1")),
-                              exercise_per_week = readr::col_factor(levels =
-                                                                    c("0", "1",
-                                                                      "2",
-                                                                      "3")),
-                              meditate = readr::col_factor(levels =
-                                                           c("0", "1",
-                                                             "2", "3")),
-                              pray = readr::col_factor(levels =
-                                                       c("0", "1",
-                                                         "2", "3")),
-                              internet = readr::col_factor(levels =
-                                                           c("0", "1")),
-                              laptop = readr::col_factor(levels = c("0", "1")),
-                              family_relationships =
-                              readr::col_factor(levels =
-                                                c("1", "2", "3", "4", "5")),
-                              friendships = readr::col_factor(levels =
-                                                              c("1", "2", "3",
-                                                                "4", "5")),
-                              romantic_relationships =
-                              readr::col_factor(levels =
-                                                c("0", "1", "2", "3", "4")),
-                              spiritual_wellnes =
-                              readr::col_factor(levels = c("1", "2", "3",
-                                                           "4", "5")),
-                              financial_wellness =
-                              readr::col_factor(levels = c("1", "2", "3",
-                                                           "4", "5")),
-                              health = readr::col_factor(levels = c("1", "2",
-                                                                    "3", "4",
-                                                                    "5")),
-                              day_out = readr::col_factor(levels = c("0", "1",
-                                                                     "2", "3")),
-                              night_out = readr::col_factor(levels = c("0",
-                                                                       "1", "2",
-                                                                       "3")),
-                              alcohol_or_narcotics =
-                              readr::col_factor(levels = c("0", "1", "2", "3")),
-                              mentor = readr::col_factor(levels = c("0", "1")),
-                              mentor_meetings = readr::col_factor(levels =
-                                                                  c("0", "1",
-                                                                    "2", "3")),
-                              `Attendance Waiver Granted: 1 = Yes, 0 = No` =
-                              readr::col_factor(levels = c("0", "1")),
-                              GRADE = readr::col_factor(levels =
-                                                        c("A", "B", "C", "D",
-                                                          "E"))),
-                  locale = readr::locale())
-```
+  
+  ```
 
 ## Description of the Dataset
 
 We then display the number of observations and number of variables. We have 101 observations and 100 variables to work with.
 
 ```{r Your Fourth Code Chunk}
-dim(student_performance_dataset)
+library(readr)
+X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset <- read_csv("data/20230412-20230719-BI1-BBIT4-1-StudentPerformanceDataset.csv")
+View(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset)
+study_summary <- summary(20230412-20230719-BI1-BBIT4-1-StudentPerformanceDataset$study_time, na.rm = TRUE)
+cat("Summary Statistics for study_time (n =", nrow(20230412-20230719-BI1-BBIT4-1-StudentPerformanceDataset), "):\n")
+cat("Mean:", mean(20230412-20230719-BI1-BBIT4-1-StudentPerformanceDataset$study_time, na.rm = TRUE), "\n")
+cat("Median:", median(20230412-20230719-BI1-BBIT4-1-StudentPerformanceDataset$study_time, na.rm = TRUE), "\n")
+cat("Standard Deviation:", sd(20230412-20230719-BI1-BBIT4-1-StudentPerformanceDataset$study_time, na.rm = TRUE), "\n")
+cat("Minimum:", min(20230412-20230719-BI1-BBIT4-1-StudentPerformanceDataset$study_time, na.rm = TRUE), "\n")
+cat("Maximum:", max(20230412-20230719-BI1-BBIT4-1-StudentPerformanceDataset$study_time, na.rm = TRUE), "\n")
+
+
+
+#  summary statistics for 'exercise_per_week' 
+exercise_summary <- summary(20230412-20230719-BI1-BBIT4-1-StudentPerformanceDataset$exercise_per_week, na.rm = TRUE)
+cat("Summary Statistics for exercise_per_week (n =", nrow(20230412-20230719-BI1-BBIT4-1-StudentPerformanceDataset), "):\n")
+cat("Mean:", mean(20230412-20230719-BI1-BBIT4-1-StudentPerformanceDataset$exercise_per_week, na.rm = TRUE), "\n")
+cat("Median:", median(20230412-20230719-BI1-BBIT4-1-StudentPerformanceDataset$exercise_per_week, na.rm = TRUE), "\n")
+cat("Standard Deviation:", sd(20230412-20230719-BI1-BBIT4-1-StudentPerformanceDataset$exercise_per_week, na.rm = TRUE), "\n")
+cat("Minimum:", min(20230412-20230719-BI1-BBIT4-1-StudentPerformanceDataset$exercise_per_week, na.rm = TRUE), "\n")
+cat("Maximum:", max(20230412-20230719-BI1-BBIT4-1-StudentPerformanceDataset$exercise_per_week, na.rm = TRUE), "\n")
+
 ```
 
-Next, we display the quartiles for each numeric variable[*... think of this process as **"storytelling using the data."** Tell us what is happening; tell us what you are discovering as you proceed with the markdown; walk us through your code step-by-step (a code walkthrough).*]{#highlight style="color: blue"}
+[\*...Here have calculated the mean, median and standard deviation for study_time and exercise per week the initial dataset had missing values and was first cleaned to avoid any errors this was done by removing the null data. After cleaning what remained was 51 rows that did not have null values.\*\*]
 
-```{r Your Fifth Code Chunk}
-summary(student_performance_dataset)
+```{r Histogram}
+# a histogram for 'study_time'
+hist(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$study_time, main = "Histogram of Study Time",
+     xlab = "Study Time", ylab = "Frequency")
+
+#  a bar plot for 'gender'
+barplot(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$gender), main = "Bar Plot of Gender",
+        xlab = "Gender", ylab = "Count", col = "pink")
 ```
 
-# \<You can Provide Another Appropriate Title Here if you wish\>
+Describe the code chunk here: here we have two histograms that show a distribution between frequency and the study time it show that many of the responses have a low study time . then there is also the another histogram that displays the distribution between the genders 0 being female and 1being male.
 
-Describe the code chunk here:
+```{r Heatmap}
+#heatmap
+library(ggplot2)
 
-```{r Your Sixth Code Chunk}
-# Fill this with R related code that will be executed when the R markdown file
+
+numeric_variables <- X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset[c(
+  "absentism_percentage", "coursework", "exam"
+)]
+
+#  correlation matrix
+correlation_matrix <- cor(numeric_variables)
+
+#  heatmap of the correlation matrix
+heatmap(correlation_matrix, 
+        col = colorRampPalette(c("red", "blue", "pink"))(100),  # Define colors
+        main = "Correlation Heatmap",
+        xlab = "Variables",
+        ylab = "Variables",
+        cex.main = 0.5)  
+
+#
+text(1:nrow(correlation_matrix), 1:ncol(correlation_matrix), round(correlation_matrix, 2), col = "black")
+
+
 ```
 
-## \<You Can Have a Sub-Title Here if you wish\>
+this is a heatmap which is a representation of data where individual values contained in a matrix are represented as colors in this case the variable chosen were absentism_percentage, coursework,exam
 
-```{r Your Seventh Code Chunk}
-# Fill this with other R related code that will be executed when the R markdown
+```{r cross_table}
+
+cross_table <- table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$gender, 
+                     X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$motivator)
+
+#  cross-tabulation table to a formatted table
+formatted_table <- as.data.frame(ftable(cross_table))
+
+
+colnames(formatted_table) <- c("Gender", "Motivator", "Count")
+
+print(formatted_table)
 ```
 
-## \<You Can Have Another Sub-Title Here if you wish\>
-
-```{r Your Eighth Code Chunk}
-# Fill this with other R related code that will be executed when the R markdown
-```
+this is a statistical technique that summarizes and displays the distribution of two categorical variables in a tabular format. In this case, it's tabulating the relationship between the gender variable and the motivator variable \`\`\`
 
 **etc.** as per the lab submission requirements. Be neat and communicate in a clear and logical manner.
