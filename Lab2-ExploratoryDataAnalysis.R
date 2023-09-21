@@ -61,6 +61,7 @@ renv::init()
 
 # You can also clean up a project by removing unused packages using the
 # following command: renv::clean()
+
   
 # After you have confirmed that your code works as expected, use
 # renv::snapshot() to record the packages and their
@@ -274,6 +275,7 @@ summary(PimaIndiansDiabetes)
 
 sapply(BostonHousing[, -4], sd)
 sapply(BostonHousing[, c(1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14)], sd)
+
 
 # The data type of "yield" should be double (not numeric) so that it can be
 # calculated.
