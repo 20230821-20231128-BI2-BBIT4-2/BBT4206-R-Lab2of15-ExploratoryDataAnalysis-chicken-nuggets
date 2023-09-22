@@ -1,35 +1,87 @@
 ---
 title: "Business Intelligence Lab Submission Markdown"
-author: "<Specify your name here>"
-date: "<Specify the date when you submitted the lab>"
+author: "<Specify your group name here>"
+date: "<22nd september 2023>"
 output:
   github_document: 
-    toc: yes
-    toc_depth: 4
-    fig_width: 6
-    fig_height: 4
-    df_print: default
+  toc: yes
+toc_depth: 4
+fig_width: 6
+fig_height: 4
+df_print: default
 editor_options:
   chunk_output_type: console
 ---
+  
+  # Student Details
+  
+  +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+  | **Student ID Numbers and Names of Group Members** | *\<list one student name, class group (just the letter; A, B, or C), and ID per line, e.g., 123456 - A - John Leposo; you should be between 2 and 5 members per group\>* |
+  |                                                   |                                                                                                                                                                          |
+  |                                                   | 1.  137118 - chicken-nuggets - Fatouamata Camara                                                                                                                         |
+  |                                                   |                                                                                                                                                                          |
+  |                                                   | 2.  127039 - chicken-nuggets - Ayan Ahmed                                                                                                                                |
+  |                                                   |                                                                                                                                                                          |
+  |                                                   | 3.  136869 - chicken-nuggets - Birkanwal Bhambra                                                                                                                         |
+  |                                                   |                                                                                                                                                                          |
+  |                                                   | 4.  127602 - chicken-nuggets - Trevor Anjere                                                                                                                             |
+  |                                                   |                                                                                                                                                                          |
+  |                                                   | 5.  133824 -chicken-nuggets - Habiba Siba                                                                                                                                |
+  +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+  | **GitHub Classroom Group Name**                   | chicken-nugget                                                                                                                                                           |
+  +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+  | **Course Code**                                   | BBT4206                                                                                                                                                                  |
+  +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+  | **Course Name**                                   | Business Intelligence II                                                                                                                                                 |
+  +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+  | **Program**                                       | Bachelor of Business Information Technology                                                                                                                              |
+  +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+  | **Semester Duration**                             | 21^st^ August 2023 to 28^th^ November 2023                                                                                                                               |
+  +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+  
+  # Setup Chunk
+  
+  We start by installing all the required packages
 
-# Student Details
+```{r Install Packages, echo=TRUE, message=FALSE, warning=FALSE}
+## formatR - Required to format R code in the markdown ----
+if (!is.element("formatR", installed.packages()[, 1])) {
+  install.packages("formatR", dependencies = TRUE,
+                   repos="https://cloud.r-project.org")
+}
+require("formatR")
 
-|                                                   |                                                                                            |
-|---------------------------------------------------|--------------------------------------------------------------------------------------------|
-| **Student ID Numbers and Names of Group Members** | \<list one student name and ID per line; you should be between 2 and 5 members per group\> |
-| **BBIT 4.2 Group**                                | \<either group A, B, or C\>                                                                |
-| **Course Code**                                   | BBT4206                                                                                    |
-| **Course Name**                                   | Business Intelligence II                                                                   |
-| **Program**                                       | Bachelor of Business Information Technology                                                |
-| **Semester Duration**                             | 21^st^ August 2023 to 28^th^ November 2023                                                 |
 
-# Setup Chunk
+## readr - Load datasets from CSV files ----
+if (!is.element("readr", installed.packages()[, 1])) {
+  install.packages("readr", dependencies = TRUE,
+                   repos="https://cloud.r-project.org")
+}
+require("readr")
+```
 
-**Note:** the following KnitR options have been set as the global defaults:\
-`knitr::opts_chunk$set(echo = TRUE, warning = FALSE, eval = TRUE,                        collapse = FALSE, tidy = TRUE)`.
+------------------------------------------------------------------------
+  
+  **Note:** the following "*KnitR*" options have been set as the defaults in this markdown:\
+`knitr::opts_chunk$set(echo = TRUE, warning = FALSE, eval = TRUE, collapse = FALSE, tidy.opts = list(width.cutoff = 80), tidy = TRUE)`.
 
-> output:\
+More KnitR options are documented here <https://bookdown.org/yihui/rmarkdown-cookbook/chunk-options.html> and here <https://yihui.org/knitr/options/>.
+
+```{r setup, echo=TRUE, message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(
+  eval = TRUE,
+  echo = TRUE,
+  warning = FALSE,
+  collapse = FALSE,
+  tidy = TRUE
+)
+```
+
+------------------------------------------------------------------------
+  
+  **Note:** the following "*R Markdown*" options have been set as the defaults in this markdown:
+  
+  > output:\
 > \
 > github_document:\
 > toc: yes\
@@ -41,38 +93,97 @@ editor_options:
 > editor_options:\
 > chunk_output_type: console
 
-More KnitR options are documented here <https://bookdown.org/yihui/rmarkdown-cookbook/chunk-options.html> and here <https://yihui.org/knitr/options/>.
+# Loading the Student Performance Dataset
 
-```{r setup, include=FALSE}
-library(formatR)
-knitr::opts_chunk$set(echo = TRUE, warning = FALSE, eval = TRUE,
-                      collapse = FALSE, tidy = TRUE)
-```
+The 20230412-20230719-BI1-BBIT4-1-StudentPerformanceDataset is then loaded. The dataset and its metadata are available here: <https://drive.google.com/drive/folders/1-BGEhfOwquXF6KKXwcvrx7WuZXuqmW9q?usp=sharing>
+  
+  ```
 
-# \<Provide an Appropriate Title Here\>
+## Description of the Dataset
 
-Describe the code chunk here:
-
-```{r Your Second Code Chunk}
-# Fill this with R related code that will be executed when the R markdown file
-# is rendered using knitR
-library(readr)
-```
-
-Describe the next code chunk here:
-
-```{r Your Third Code Chunk}
-# Fill this with other R related code that will be executed when the R markdown
-# file is rendered using knitR
-library(readr)
-```
-
-## \<You Can Have a Sub-Title Here\>
+We then display the number of observations and number of variables. We have 101 observations and 100 variables to work with.
 
 ```{r Your Fourth Code Chunk}
-# Fill this with other R related code that will be executed when the R markdown
-# file is rendered using knitR
 library(readr)
+X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset <- read_csv("data/20230412-20230719-BI1-BBIT4-1-StudentPerformanceDataset.csv")
+View(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset)
+study_summary <- summary(20230412-20230719-BI1-BBIT4-1-StudentPerformanceDataset$study_time, na.rm = TRUE)
+cat("Summary Statistics for study_time (n =", nrow(20230412-20230719-BI1-BBIT4-1-StudentPerformanceDataset), "):\n")
+cat("Mean:", mean(20230412-20230719-BI1-BBIT4-1-StudentPerformanceDataset$study_time, na.rm = TRUE), "\n")
+cat("Median:", median(20230412-20230719-BI1-BBIT4-1-StudentPerformanceDataset$study_time, na.rm = TRUE), "\n")
+cat("Standard Deviation:", sd(20230412-20230719-BI1-BBIT4-1-StudentPerformanceDataset$study_time, na.rm = TRUE), "\n")
+cat("Minimum:", min(20230412-20230719-BI1-BBIT4-1-StudentPerformanceDataset$study_time, na.rm = TRUE), "\n")
+cat("Maximum:", max(20230412-20230719-BI1-BBIT4-1-StudentPerformanceDataset$study_time, na.rm = TRUE), "\n")
+
+
+
+#  summary statistics for 'exercise_per_week' 
+exercise_summary <- summary(20230412-20230719-BI1-BBIT4-1-StudentPerformanceDataset$exercise_per_week, na.rm = TRUE)
+cat("Summary Statistics for exercise_per_week (n =", nrow(20230412-20230719-BI1-BBIT4-1-StudentPerformanceDataset), "):\n")
+cat("Mean:", mean(20230412-20230719-BI1-BBIT4-1-StudentPerformanceDataset$exercise_per_week, na.rm = TRUE), "\n")
+cat("Median:", median(20230412-20230719-BI1-BBIT4-1-StudentPerformanceDataset$exercise_per_week, na.rm = TRUE), "\n")
+cat("Standard Deviation:", sd(20230412-20230719-BI1-BBIT4-1-StudentPerformanceDataset$exercise_per_week, na.rm = TRUE), "\n")
+cat("Minimum:", min(20230412-20230719-BI1-BBIT4-1-StudentPerformanceDataset$exercise_per_week, na.rm = TRUE), "\n")
+cat("Maximum:", max(20230412-20230719-BI1-BBIT4-1-StudentPerformanceDataset$exercise_per_week, na.rm = TRUE), "\n")
+
 ```
 
-**etc.** as per the lab submission requirements.
+[\*...Here have calculated the mean, median and standard deviation for study_time and exercise per week the initial dataset had missing values and was first cleaned to avoid any errors this was done by removing the null data. After cleaning what remained was 51 rows that did not have null values.\*\*]
+
+```{r Histogram}
+# a histogram for 'study_time'
+hist(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$study_time, main = "Histogram of Study Time",
+     xlab = "Study Time", ylab = "Frequency")
+
+#  a bar plot for 'gender'
+barplot(table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$gender), main = "Bar Plot of Gender",
+        xlab = "Gender", ylab = "Count", col = "pink")
+```
+
+Describe the code chunk here: here we have two histograms that show a distribution between frequency and the study time it show that many of the responses have a low study time . then there is also the another histogram that displays the distribution between the genders 0 being female and 1being male.
+
+```{r Heatmap}
+#heatmap
+library(ggplot2)
+
+
+numeric_variables <- X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset[c(
+  "absentism_percentage", "coursework", "exam"
+)]
+
+#  correlation matrix
+correlation_matrix <- cor(numeric_variables)
+
+#  heatmap of the correlation matrix
+heatmap(correlation_matrix, 
+        col = colorRampPalette(c("red", "blue", "pink"))(100),  # Define colors
+        main = "Correlation Heatmap",
+        xlab = "Variables",
+        ylab = "Variables",
+        cex.main = 0.5)  
+
+#
+text(1:nrow(correlation_matrix), 1:ncol(correlation_matrix), round(correlation_matrix, 2), col = "black")
+
+
+```
+
+this is a heatmap which is a representation of data where individual values contained in a matrix are represented as colors in this case the variable chosen were absentism_percentage, coursework,exam
+
+```{r cross_table}
+
+cross_table <- table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$gender, 
+                     X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset$motivator)
+
+#  cross-tabulation table to a formatted table
+formatted_table <- as.data.frame(ftable(cross_table))
+
+
+colnames(formatted_table) <- c("Gender", "Motivator", "Count")
+
+print(formatted_table)
+```
+
+this is a statistical technique that summarizes and displays the distribution of two categorical variables in a tabular format. In this case, it's tabulating the relationship between the gender variable and the motivator variable \`\`\`
+
+**etc.** as per the lab submission requirements. Be neat and communicate in a clear and logical manner.

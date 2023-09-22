@@ -61,6 +61,7 @@ renv::init()
 
 # You can also clean up a project by removing unused packages using the
 # following command: renv::clean()
+
   
 # After you have confirmed that your code works as expected, use
 # renv::snapshot() to record the packages and their
@@ -274,6 +275,7 @@ summary(PimaIndiansDiabetes)
 
 sapply(BostonHousing[, -4], sd)
 sapply(BostonHousing[, c(1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14)], sd)
+
 
 # The data type of "yield" should be double (not numeric) so that it can be
 # calculated.
@@ -830,6 +832,21 @@ renv::snapshot()
 # Create a new file called "Lab2-Submission-ExploratoryDataAnalysis.R".
 # Provide all the code you have used to perform an exploratory data analysis of
 # the "Class Performance Dataset" provided on the eLearning platform.
+library(readr)
+X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset <- read_csv("data/20230412-20230719-BI1-BBIT4-1-StudentPerformanceDataset.csv")
+View(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset)
+
+
+
+# Sample size
+
+
+#  summary statistics for 'study_time' with missing values removed
+
+# 
+
+
+
 
 ## Part B ----
 # Upload *the link* to your "Lab2-Submission-ExploratoryDataAnalysis.R" hosted
